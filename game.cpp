@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -21,8 +21,8 @@ eDirection dir;
 void Setup() {
     gameOver = false;
     dir = STOP;
-    x = width / 2;
-    y = height / 2;
+    x = width / 2 - 1;
+    y = height / 2 - 1;
     fruitX = rand() % width;
     fruitY = rand() % height;
     score = 0;
@@ -40,7 +40,14 @@ void Draw() {
             if (j == 0 || j == width - 1) {
                 cout << "#";
             }
-            cout << " ";
+
+            if (i == y && j == x) {
+                cout << "0";
+            } else if(i == fruitY && j == fruitX) {
+                cout << "F";
+            } else {
+                cout << " ";   
+            }
         }
         cout << endl;
     }
